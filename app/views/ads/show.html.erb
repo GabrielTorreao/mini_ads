@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @ad.budget %>
+</p>
+
+<ol>
+	<% for creative in @ad.creatives %>
+	<li>
+		<strong>Bid: </strong><%= h creative.bid %>
+		<strong>AdText: </strong><%= h creative.adText %><br>
+		<% for targeting in @ad.targetings %>
+
+			<strong>Gender: </strong><%= h targeting.gender %><br>
+			<ul>
+				<% for place in targeting.places %>
+					<strong>Place: </strong><%= h place.content %><br>
+				<% end %>
+			</ul>
+		<% end %>
+	</li>
+	<% end %>
+</ol>
+
+<p>
+<%= link_to 'Edit', edit_ad_path(@ad) %> |
+<%= link_to 'Delete', @ad, method: :delete, data: { confirm: 'Are you sure you want to delete this Ad?' } %> |
+<%= link_to 'Back to index', ads_path %>
+</p>

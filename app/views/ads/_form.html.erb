@@ -1,0 +1,32 @@
+<%= form_for(@ad) do |f| %>
+  <% if @ad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
+
+      <ul>
+      <% @ad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :budget %><br>
+    <%= f.text_field :budget %>
+  </div>
+
+  <h2>Creatives:</h2>
+    <%= f.fields_for :creatives do |creatives_form| %>
+      <%= render 'creative_fields', :f => creatives_form %>
+    <% end %>
+
+    <h2>Targetings:</h2>
+    <%= f.fields_for :targetings do |targetings_form| %>
+      <%= render 'targeting_fields', :f => targetings_form %>
+    <% end %>
+    <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

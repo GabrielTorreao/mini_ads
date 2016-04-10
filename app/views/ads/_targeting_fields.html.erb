@@ -1,0 +1,13 @@
+<fieldset>
+
+	<%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "Remove Targeting" %><br><br>
+
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %> <h3>masculino, feminino ou indeterminado</h3>
+
+    <%= f.fields_for :places do |places_form| %>
+      <%= render 'place_fields', :f => places_form %>
+    <% end %>
+
+</fieldset>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Registered Ads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Budget</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ads.each do |ad| %>
+      <tr>
+        <td><%= ad.budget %></td>
+        <td><%= link_to 'Details', ad %></td>
+        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
+        <td><%= link_to 'Delete', ad, method: :delete, data: { confirm: 'Are you sure you want to delete this Ad?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= will_paginate @ads %>
+
+<br>
+
+<%= link_to 'New Ad', new_ad_path %>
